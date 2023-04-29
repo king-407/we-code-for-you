@@ -15,6 +15,7 @@ import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Lottie from 'lottie-react-native';
+import auth from '@react-native-firebase/auth';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -139,6 +140,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: 'TitilliumWeb-Regular',
     paddingLeft: 10,
+    color: 'black',
   },
   form: {
     flexDirection: 'row',

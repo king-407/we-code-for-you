@@ -9,6 +9,8 @@ import auth from '@react-native-firebase/auth';
 import Splash from './fun/Splash';
 import onboarding from './fun/onBoarding';
 import Home from './AfterLogin/Home';
+import Enter from './AfterLogin/Enter';
+import ShowTask from './AfterLogin/ShowTask';
 const App = () => {
   const [splash, setSplash] = useState(true);
   useEffect(() => {
@@ -34,7 +36,14 @@ const App = () => {
           headerShown: false,
         }}>
         {user ? (
-          <Stack.Screen name="Home" component={Home} />
+          <>
+            <Stack.Screen name="Enter">
+              {props => <Enter {...props} user={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="ShowTask">
+              {props => <ShowTask {...props} user={user} />}
+            </Stack.Screen>
+          </>
         ) : (
           <>
             {splash ? <Stack.Screen name="Splash" component={Splash} /> : null}
