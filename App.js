@@ -37,9 +37,9 @@ const App = () => {
         }}>
         {user ? (
           <>
-            <Stack.Screen name="Enter">
+            {/* <Stack.Screen name="Enter">
               {props => <Enter {...props} user={user} />}
-            </Stack.Screen>
+            </Stack.Screen> */}
             <Stack.Screen name="ShowTask">
               {props => <ShowTask {...props} user={user} />}
             </Stack.Screen>
