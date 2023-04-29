@@ -10,7 +10,7 @@ import Lottie from 'lottie-react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import firestore from '@react-native-firebase/firestore';
-const Enter = ({user}) => {
+const Enter = ({user, navigation}) => {
   const [work, setWork] = useState();
   const [time, setTime] = useState();
   onAdd = async () => {
@@ -22,6 +22,7 @@ const Enter = ({user}) => {
         work,
         time,
       });
+      navigation.navigate('ShowTask');
     } catch (e) {
       console.log(e);
     }

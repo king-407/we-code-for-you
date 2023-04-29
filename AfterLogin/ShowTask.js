@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import Lottie from 'lottie-react-native';
@@ -37,7 +37,7 @@ const ShowTask = ({user}) => {
         <Text
           style={{
             color: 'black',
-            marginTop: 30,
+            marginTop: 50,
             marginLeft: 10,
             fontSize: 37,
             fontFamily: 'TitilliumWeb-Bold',
@@ -51,10 +51,10 @@ const ShowTask = ({user}) => {
             <TouchableOpacity
               key={element.work}
               style={{
-                marginTop: 10,
-                height: 150,
+                marginTop: 40,
+                height: 170,
                 width: 350,
-                backgroundColor: '#FFF2FD',
+                backgroundColor: 'white',
                 borderRadius: 35,
 
                 elevation: 10,
@@ -62,29 +62,48 @@ const ShowTask = ({user}) => {
                 alignSelf: 'center',
                 // flexDirection: 'row',
               }}>
-              <View>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                }}>
+                <Image
+                  style={{marginLeft: 30}}
+                  source={require('../Images/work.png')}
+                />
                 <Text
                   style={{
-                    marginLeft: 20,
-                    marginTop: 20,
-                    fontSize: 20,
+                    marginLeft: 50,
+                    marginTop: 25,
+                    fontSize: 30,
 
-                    fontFamily: 'TiltWarp-Regular',
                     color: 'black',
+                    fontFamily: 'TitilliumWeb-Bold',
                   }}>
                   {element.work}
                 </Text>
+              </View>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  //   alignItems: 'center',
+                  //   justifyItems: 'center',
+                }}>
+                <Image
+                  style={{marginLeft: 30, marginTop: 20, padding: 10}}
+                  source={require('../Images/clock.png')}
+                />
                 <Text
                   style={{
-                    marginLeft: 270,
-                    marginTop: 47,
-                    fontSize: 17,
+                    marginLeft: 50,
+                    marginTop: 50,
+                    fontSize: 25,
 
-                    fontWeight: '500',
+                    fontFamily: 'TitilliumWeb-Bold',
                     color: 'black',
-                    fontFamily: 'TiltWarp-Regular',
                   }}>
-                  - {element.time}
+                  {element.time}
                 </Text>
               </View>
             </TouchableOpacity>
