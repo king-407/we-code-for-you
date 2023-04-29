@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf",
+      "sha1": "d25a5e04286181f32a4772672e599194e2079b4e"
+    },
+    {
+      "path": "assets/fonts/JosefinSans-VariableFont_wght.ttf",
+      "sha1": "15d8cb4a07c50fc77bd192dcb7526d3c484ec855"
+    },
+    {
+      "path": "assets/fonts/Kalam-Bold.ttf",
+      "sha1": "2a559015d425e2197d24dd64ec5f575b713c008f"
+    },
+    {
+      "path": "assets/fonts/Kalam-Regular.ttf",
+      "sha1": "8780563680372a86968c46c50cba05143654fe49"
+    },
+    {
+      "path": "assets/fonts/Merienda-VariableFont_wght.ttf",
+      "sha1": "a07d74629d13ae8e11fda279459d1536126b68a8"
+    },
+    {
+      "path": "assets/fonts/TitilliumWeb-Bold.ttf",
+      "sha1": "1de05d92173edf1cf44696d3c8a5842ebbf1e75f"
+    },
+    {
+      "path": "assets/fonts/TitilliumWeb-Regular.ttf",
+      "sha1": "c1d91bd86751bd0a186ac0323dcf47de4d0c0981"
+    }
+  ]
+}
