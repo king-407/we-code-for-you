@@ -14,7 +14,7 @@ const Onboarding = ({navigation}) => {
       <Swiper style={styles.wrapper} showsButtons={false}>
         <View style={styles.slide1}>
           <Image
-            source={require('../Images/Hotspot.png')}
+            source={require('../Images/First.png')}
             style={{
               height: 400,
               width: 400,
@@ -30,7 +30,7 @@ const Onboarding = ({navigation}) => {
                 fontFamily: 'TitilliumWeb-Bold',
                 alignSelf: 'center',
               }}>
-              Hotspot Areas
+              Organise yourself
             </Text>
 
             <Text
@@ -42,9 +42,8 @@ const Onboarding = ({navigation}) => {
                 padding: 5,
                 margin: 10,
               }}>
-              {/* BusKaro helps you to track the location of your bus, which saves your time. */}
-              View areas with high accident rates in real-time, take alternative
-              routes if needed.
+              Start enjoying more organised work life. Prioritise your
+              activities with just one button press.
             </Text>
           </View>
 
@@ -55,29 +54,27 @@ const Onboarding = ({navigation}) => {
 
         <View style={styles.slide2}>
           <Image
-            source={require('../Images/Danger.png')}
+            source={require('../Images/Second.png')}
             style={{
               height: 350,
               width: 350,
               alignSelf: 'center',
-              marginTop: 30,
             }}
           />
           <View
             style={{
-              padding: 30,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
             <Text
               style={{
-                fontSize: 34,
+                fontSize: 30,
                 color: 'black',
                 fontFamily: 'TitilliumWeb-Bold',
                 alignSelf: 'center',
                 marginTop: 60,
               }}>
-              Accident Alerts !!
+              Keep on track with taskoo
             </Text>
 
             <Text
@@ -89,63 +86,17 @@ const Onboarding = ({navigation}) => {
                 padding: 5,
                 margin: 10,
               }}>
-              {/* Buskaro helps you to track the seat occupancy by real time monitoring of the seats available. */}
-              See the cause of accidents on each turn, and get aware of
-              potential hazards and take necessary precautions.
-            </Text>
-          </View>
-
-          {/* <TouchableOpacity style={{ backgroundColor: '#B9E0FF', justifyContent: 'center', alignItems: 'center', borderRadius: 15, marginTop: 10 }}>
-                    <Text style={{ padding: 15, width: 250, textAlign: 'center', color: 'black', fontWeight: '700', fontSize: 20 }}>Skip</Text>
-                </TouchableOpacity> */}
-        </View>
-        <View style={styles.slide3}>
-          <Image
-            source={require('../Images/Emergency.png')}
-            style={{
-              height: 300,
-              width: 350,
-              alignSelf: 'center',
-            }}
-          />
-          <View
-            style={{
-              padding: 30,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 34,
-                color: 'black',
-                fontFamily: 'TitilliumWeb-Bold',
-                alignSelf: 'center',
-                marginTop: 60,
-              }}>
-              Crash Guard
-            </Text>
-
-            <Text
-              style={{
-                fontSize: 20,
-                color: '#94A3B8',
-                fontFamily: 'TitilliumWeb-Regular',
-                alignSelf: 'center',
-                padding: 5,
-                margin: 10,
-              }}>
-              Detects accident and automatically sends an emergency alert to
-              your loved ones, ensuring your safety.
+              Write your daily goals in sequence and accomplish them.
             </Text>
           </View>
 
           <TouchableOpacity
             style={{
-              backgroundColor: '#dbe8ff',
+              backgroundColor: '#E39FF6',
               justifyContent: 'center',
               alignItems: 'center',
               borderRadius: 50,
-              marginTop: 10,
+              marginTop: 50,
             }}
             onPress={() => {
               navigation.navigate('Login');
@@ -155,11 +106,11 @@ const Onboarding = ({navigation}) => {
                 padding: 9,
                 width: 350,
                 textAlign: 'center',
-                color: '#3B82F6',
+                color: 'white',
                 fontWeight: 'bold',
                 fontSize: 24,
               }}>
-              Skip
+              Next
             </Text>
           </TouchableOpacity>
         </View>

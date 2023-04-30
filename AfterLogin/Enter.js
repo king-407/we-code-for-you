@@ -4,12 +4,14 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useState} from 'react';
 import Lottie from 'lottie-react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 const Enter = ({user, navigation}) => {
   const [work, setWork] = useState();
   const [time, setTime] = useState();
@@ -28,78 +30,96 @@ const Enter = ({user, navigation}) => {
     }
   };
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavious={Platform.OS == 'ios' ? 'padding' : 'height'}
+      style={{flex: 1}}>
       <View>
-        <Text
-          style={{
-            color: 'black',
-            marginTop: 30,
-            marginLeft: 10,
-            fontSize: 37,
-            fontFamily: 'TitilliumWeb-Bold',
-          }}>
-          Plan your Day
-        </Text>
-        <Lottie
-          style={{height: 300, alignSelf: 'center'}}
-          source={require('../Animations/Work.json')}
-          autoPlay
-        />
-        <View style={{marginTop: 40}}>
-          <View style={styles.form}>
-            <MaterialCommunityIcons
-              style={styles.icon}
-              name="note"
-              size={32}
-              color="#94A3B8"
-            />
-            <TextInput
-              type="email"
-              style={styles.input}
-              placeholder="Enter Title"
-              placeholderTextColor={'#94A3B8'}
-              onChangeText={text => setWork(text)}></TextInput>
-          </View>
+        <View>
+          <Lottie
+            style={{height: 300, alignSelf: 'center', marginTop: 2}}
+            source={require('../Animations/Work.json')}
+            autoPlay
+          />
+          <View style={{marginTop: 40}}>
+            <View style={styles.form}>
+              <MaterialCommunityIcons
+                style={styles.icon}
+                name="note"
+                size={32}
+                color="#94A3B8"
+              />
+              <TextInput
+                type="email"
+                style={styles.input}
+                placeholder="Enter Title"
+                placeholderTextColor={'#94A3B8'}
+                onChangeText={text => setWork(text)}></TextInput>
+            </View>
 
-          <View style={styles.form}>
-            <FontAwesome5
-              name="clock"
-              style={styles.icon}
-              size={32}
-              color="#94A3B8"
-            />
-            <TextInput
-              style={styles.input}
-              type="password"
-              placeholder="Duration in hours"
-              placeholderTextColor={'#94A3B8'}
-              onChangeText={text => setTime(text)}></TextInput>
+            <View style={styles.form}>
+              <FontAwesome5
+                name="clock"
+                style={styles.icon}
+                size={32}
+                color="#94A3B8"
+              />
+              <TextInput
+                style={styles.input}
+                type="password"
+                placeholder="Duration in hours"
+                placeholderTextColor={'#94A3B8'}
+                onChangeText={text => setTime(text)}></TextInput>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={{marginTop: 80}}>
-        <TouchableOpacity
-          style={{
-            backgroundColor: '#E39FF6',
-            width: 300,
-            alignSelf: 'center',
-            borderRadius: 20,
-            height: 60,
-            elevation: 6,
-          }}
-          onPress={onAdd}>
-          <Text
+        <View style={{marginTop: 70}}>
+          <TouchableOpacity
             style={{
-              padding: 10,
+              backgroundColor: '#E39FF6',
+              width: 350,
               alignSelf: 'center',
-              fontFamily: 'TitilliumWeb-Bold',
-              fontSize: 20,
+              borderRadius: 20,
+              height: 60,
+              elevation: 6,
+            }}
+            onPress={() => {
+              navigation.navigate('ShowTask');
             }}>
-            Let's Start
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                padding: 10,
+                alignSelf: 'center',
+                fontFamily: 'TitilliumWeb-Bold',
+                fontSize: 20,
+              }}>
+              Manage Task
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{marginTop: 30}}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#E39FF6',
+              width: 350,
+              alignSelf: 'center',
+              borderRadius: 20,
+              height: 60,
+              elevation: 6,
+            }}
+            onPress={onAdd}>
+            <Text
+              style={{
+                padding: 10,
+                alignSelf: 'center',
+                fontFamily: 'TitilliumWeb-Bold',
+                fontSize: 20,
+              }}>
+              Add Task
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
@@ -124,6 +144,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     bottom: 15,
     width: 350,
+    marginTop: 20,
     alignSelf: 'center',
   },
   icon: {

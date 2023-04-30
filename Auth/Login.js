@@ -40,10 +40,7 @@ const Login = ({navigation}) => {
   }
   return (
     <ScrollView style={styles.container}>
-      <Image
-        style={styles.tinyLogo}
-        source={require('../Images/Register.png')}
-      />
+      <Image style={styles.tinyLogo} source={require('../Images/Login.png')} />
       <Text
         style={{
           fontSize: 50,
@@ -83,6 +80,7 @@ const Login = ({navigation}) => {
           type="password"
           placeholder="password"
           placeholderTextColor={'#94A3B8'}
+          secureTextEntry={true}
           onChangeText={text => setPassword(text)}></TextInput>
       </View>
       <TouchableOpacity style={styles.button} onPress={onLogin}>
@@ -169,7 +167,7 @@ const styles = StyleSheet.create({
     width: 350,
   },
   button: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#E39FF6',
     padding: 12,
     borderRadius: 50,
     marginVertical: 20,

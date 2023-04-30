@@ -75,6 +75,7 @@ const Login = ({navigation}) => {
         style={styles.tinyLogo}
         source={require('../Images/Register.png')}
       />
+
       <Text
         style={{
           fontSize: 50,
@@ -209,7 +210,7 @@ const styles = StyleSheet.create({
   button: {
     position: 'relative',
     bottom: 40,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#E39FF6',
     padding: 14,
     borderRadius: 50,
     marginVertical: 20,

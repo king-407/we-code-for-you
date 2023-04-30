@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import Lottie from 'lottie-react-native';
@@ -6,26 +6,49 @@ import {ScrollView} from 'react-native-gesture-handler';
 const ShowTask = ({user}) => {
   const [kaam, setKaam] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const handleDelete = element => {
+    firestore()
+      .collection('Task')
+      .doc(user.uid)
+      .collection('Work')
+      .doc(element.id)
+      .delete()
+      .then(() => {
+        console.log('User deleted!');
+      });
+  };
   const getTweets = async () => {
     try {
       setLoading(true);
-      const querySnap = await firestore()
+      //   const querySnap = await firestore()
+      //     .collection('Task')
+      //     .doc(user.uid)
+      //     .collection('Work')
+      //     .get();
+
+      //   let cards = [];
+      //   querySnap._docs.forEach(element => {
+      //     console.log(element);
+      //     cards.push(element._data);
+      //   });
+      firestore()
         .collection('Task')
         .doc(user.uid)
         .collection('Work')
-        .get();
-
-      let cards = [];
-      querySnap._docs.forEach(element => {
-        cards.push(element._data);
-      });
-      setKaam(cards);
-      setLoading(false);
+        .onSnapshot(query => {
+          let data = [];
+          query.forEach(documentSnapshot => {
+            data.push({...documentSnapshot.data(), id: documentSnapshot.id});
+          });
+          setKaam(data);
+          setLoading(false);
+        });
     } catch (e) {}
   };
+
   useEffect(() => {
     getTweets();
+    console.log(kaam);
   }, []);
   if (loading) {
     return <Lottie source={require('../Animations/loader.json')} autoPlay />;
@@ -61,6 +84,27 @@ const ShowTask = ({user}) => {
 
                 alignSelf: 'center',
                 // flexDirection: 'row',
+              }}
+              onLongPress={() => {
+                Alert.alert(
+                  'Do you want to delete the subject',
+                  ' ',
+                  [
+                    {
+                      text: 'Yes',
+                      onPress: () => handleDelete(element),
+                    },
+
+                    {
+                      text: 'No',
+                      onPress: () => console.log('No button clicked'),
+                      style: 'cancel',
+                    },
+                  ],
+                  {
+                    cancelable: true,
+                  },
+                );
               }}>
               <View
                 style={{
@@ -75,7 +119,7 @@ const ShowTask = ({user}) => {
                   style={{
                     marginLeft: 50,
                     marginTop: 25,
-                    fontSize: 30,
+                    fontSize: 25,
 
                     color: 'black',
                     fontFamily: 'TitilliumWeb-Bold',
@@ -96,9 +140,9 @@ const ShowTask = ({user}) => {
                 />
                 <Text
                   style={{
-                    marginLeft: 50,
+                    marginLeft: 30,
                     marginTop: 50,
-                    fontSize: 25,
+                    fontSize: 22,
 
                     fontFamily: 'TitilliumWeb-Bold',
                     color: 'black',

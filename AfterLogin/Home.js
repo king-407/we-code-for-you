@@ -1,24 +1,45 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
-
-const Home = () => {
+import firestore from '@react-native-firebase/firestore';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+const Home = ({navigation, user}) => {
   return (
     <ScrollView style={{backgroundColor: 'white'}}>
+      <MaterialCommunityIcons
+        name="logout"
+        style={{
+          position: 'absolute',
+          right: 90,
+          color: 'black',
+          right: 20,
+          top: 20,
+        }}
+        size={45}
+        color="#94A3B8"
+      />
       <View>
         <Text
           style={{
             color: 'black',
-            marginTop: 100,
+            marginTop: 80,
             fontSize: 30,
             fontFamily: 'TitilliumWeb-Bold',
             marginRight: 20,
             marginLeft: 15,
           }}>
           Manage you tasks everyday with{' '}
-          <Text style={{color: '#F89880'}}>taskoo</Text>
+          <Text style={{color: '#E39FF6'}}>taskoo</Text>
         </Text>
-        <Image style={styles.tinyLogo} source={require('../Images/Task.png')} />
+        <TouchableOpacity
+          onPress={() => {
+            console.log('logout');
+            auth().signOut();
+          }}></TouchableOpacity>
+        <Image
+          style={styles.tinyLogo}
+          source={require('../Images/Taskoo.png')}
+        />
       </View>
       <View>
         <Text
@@ -35,13 +56,14 @@ const Home = () => {
       <View style={{marginTop: 80}}>
         <TouchableOpacity
           style={{
-            backgroundColor: '#F89880',
+            backgroundColor: '#E39FF6',
             width: 300,
             alignSelf: 'center',
             borderRadius: 20,
             height: 60,
             elevation: 6,
-          }}>
+          }}
+          onPress={() => navigation.navigate('Enter')}>
           <Text
             style={{
               padding: 10,
