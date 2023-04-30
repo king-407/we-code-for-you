@@ -12,12 +12,6 @@ import Home from './AfterLogin/Home';
 import Enter from './AfterLogin/Enter';
 import ShowTask from './AfterLogin/ShowTask';
 const App = () => {
-  const [splash, setSplash] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setSplash(false);
-    }, 3000);
-  }, []);
   const [user, setUser] = useState(null);
   useEffect(() => {
     const unregister = auth().onAuthStateChanged(exist => {
@@ -49,7 +43,6 @@ const App = () => {
           </>
         ) : (
           <>
-            {splash ? <Stack.Screen name="Splash" component={Splash} /> : null}
             <Stack.Screen name="onBoarding" component={onboarding} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import Lottie from 'lottie-react-native';
@@ -12,9 +13,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import {ScrollView} from 'react-native-gesture-handler';
 const Enter = ({user, navigation}) => {
-  const [work, setWork] = useState();
-  const [time, setTime] = useState();
+  const [work, setWork] = useState('');
+  const [time, setTime] = useState('');
   onAdd = async () => {
     if (!work || !time) {
       return Alert.alert('warning !!', 'Please enter all the fields');
@@ -24,15 +26,15 @@ const Enter = ({user, navigation}) => {
         work,
         time,
       });
+      setTime();
+      setWork();
       navigation.navigate('ShowTask');
     } catch (e) {
       console.log(e);
     }
   };
   return (
-    <KeyboardAvoidingView
-      behavious={Platform.OS == 'ios' ? 'padding' : 'height'}
-      style={{flex: 1}}>
+    <ScrollView>
       <View>
         <View>
           <Lottie
@@ -49,7 +51,8 @@ const Enter = ({user, navigation}) => {
                 color="#94A3B8"
               />
               <TextInput
-                type="email"
+                type="text"
+                value={work}
                 style={styles.input}
                 placeholder="Enter Title"
                 placeholderTextColor={'#94A3B8'}
@@ -65,7 +68,8 @@ const Enter = ({user, navigation}) => {
               />
               <TextInput
                 style={styles.input}
-                type="password"
+                type="text"
+                value={time}
                 placeholder="Duration in hours"
                 placeholderTextColor={'#94A3B8'}
                 onChangeText={text => setTime(text)}></TextInput>
@@ -119,7 +123,7 @@ const Enter = ({user, navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
