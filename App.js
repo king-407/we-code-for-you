@@ -6,7 +6,7 @@ const Stack = createStackNavigator();
 import Register from './Auth/Register';
 import Login from './Auth/Login';
 import auth from '@react-native-firebase/auth';
-import Splash from './fun/Splash';
+
 import onboarding from './fun/onBoarding';
 import Home from './AfterLogin/Home';
 import Enter from './AfterLogin/Enter';

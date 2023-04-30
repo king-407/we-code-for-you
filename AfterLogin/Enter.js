@@ -70,7 +70,7 @@ const Enter = ({user, navigation}) => {
                 style={styles.input}
                 type="text"
                 value={time}
-                placeholder="Duration in hours"
+                placeholder="Enter duration"
                 placeholderTextColor={'#94A3B8'}
                 onChangeText={text => setTime(text)}></TextInput>
             </View>

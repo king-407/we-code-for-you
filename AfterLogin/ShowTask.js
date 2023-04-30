@@ -61,11 +61,11 @@ const ShowTask = ({user}) => {
           style={{
             color: 'black',
             marginTop: 50,
-            marginLeft: 10,
+            marginLeft: 20,
             fontSize: 37,
             fontFamily: 'TitilliumWeb-Bold',
           }}>
-          Your Tasks
+          Your Tasks 📝 📝
         </Text>
       </View>
       <View style={{marginTop: 40}}>
@@ -87,7 +87,7 @@ const ShowTask = ({user}) => {
               }}
               onLongPress={() => {
                 Alert.alert(
-                  'Do you want to delete the subject',
+                  'Do you want to delete the Task ?',
                   ' ',
                   [
                     {

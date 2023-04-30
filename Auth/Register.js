@@ -128,7 +128,7 @@ const Login = ({navigation}) => {
           style={styles.input}
           placeholder="password"
           placeholderTextColor={'#94A3B8'}
-          secureTextEntry={true}
+          // secureTextEntry={true}
           onChangeText={text => setPassword(text)}></TextInput>
       </View>
       <TouchableOpacity style={styles.button} onPress={onRegister}>
